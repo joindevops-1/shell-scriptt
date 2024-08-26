@@ -17,6 +17,11 @@ CHECK_ROOT(){
     fi
 }
 
+USAGE(){
+    echo "USAGE: $0 package1 package2 ..."
+    exit 1
+}
+
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
@@ -26,6 +31,11 @@ VALIDATE(){
         echo -e "$2 is... $G SUCCESS $N" | tee -a $LOGFILE
     fi
 }
+
+if [ $# -eq 0 ]
+then
+    USAGE
+fi
 
 echo "script started executing at: $(date)" | tee -a $LOGFILE
 
