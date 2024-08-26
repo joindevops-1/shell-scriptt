@@ -31,10 +31,10 @@ CHECK_ROOT
 
 for package in $@
 do
-    dnf list installed $package
-    if [ $? -ne 0 ]
+    dnf list installed $package &>>$LOGFILE
+    if [ $? -ne 0 ] 
     then
-        echo "$package is not installed, going to install it.." &>>$LOGFILEOG
+        echo "$package is not installed, going to install it.." &>>$LOGFILE
         dnf install $package -y &>>$LOGFILE
         VALIDATE $? "Installing $package"
     else
