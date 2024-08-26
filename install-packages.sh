@@ -27,6 +27,8 @@ VALIDATE(){
     fi
 }
 
+echo "script started executing at: $(date)" | tee -a $LOGFILE
+
 CHECK_ROOT
 
 for package in $@
@@ -34,11 +36,11 @@ do
     dnf list installed $package &>>$LOGFILE
     if [ $? -ne 0 ] 
     then
-        echo "$package is not installed, going to install it.." &>>$LOGFILE
+        echo "$package is not installed, going to install it.." | tee -a $LOGFILE
         dnf install $package -y &>>$LOGFILE
         VALIDATE $? "Installing $package"
     else
-        echo "$package is already installed, nothing to do.." &>>$LOGFILE
+        echo "$package is already installed, nothing to do.." | tee -a $LOGFILE
     fi
 done
 
