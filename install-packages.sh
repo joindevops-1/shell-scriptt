@@ -27,7 +27,3 @@ VALIDATE(){
 
 CHECK_ROOT
 
-for package in $@
-do
-
-done
