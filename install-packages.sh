@@ -18,7 +18,7 @@ CHECK_ROOT(){
 }
 
 USAGE(){
-    echo "USAGE: $0 package1 package2 ..."
+    echo -e "$R USAGE:: $N $0 package1 package2 ..."
     exit 1
 }
 
