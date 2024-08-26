@@ -12,7 +12,7 @@ N="\e[0m"
 CHECK_ROOT(){
     if [ $USERID -ne 0 ]
     then
-        echo "Please run this script with root priveleges" &>>$LOGFILE
+        echo "Please run this script with root priveleges" | tee -a $LOGFILE
         exit 1
     fi
 }
@@ -20,10 +20,10 @@ CHECK_ROOT(){
 VALIDATE(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$2 is...$R FAILED $N" &>>$LOGFILE
+        echo -e "$2 is...$R FAILED $N" | tee -a $LOGFILE
         exit 1
     else
-        echo -e "$2 is... $G SUCCESS $N" &>>$LOGFILE
+        echo -e "$2 is... $G SUCCESS $N" | tee -a $LOGFILE
     fi
 }
 
